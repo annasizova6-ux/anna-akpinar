@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anna Akpinar Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112.5,500;112.5,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a working drawing sheet — left-aligned text column, a thin rule grid, schematic diagrams instead of stock art. */
+:root{
+  --bg:#F4F6F7; --paper:#FFFFFF; --ink:#18232C; --ink-2:#4A5862; --ink-3:#7E8A93;
+  --rule:#D5DCE1; --accent:#0E6B86; --accent-ink:#0A4F63; --amber:#B9721C; --amber-bg:#FBF1E3; --tint:#E6F0F4;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif; --body:"IBM Plex Sans","Segoe UI",Roboto,sans-serif; --mono:"IBM Plex Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#121A20; --paper:#18232C; --ink:#EEF2F4; --ink-2:#B9C3CA; --ink-3:#85939C;
+  --rule:#2C3A45; --accent:#5FB6D1; --accent-ink:#8ED0E4; --amber:#E2A24E; --amber-bg:#2A2419; --tint:#1C2E37; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#121A20; --paper:#18232C; --ink:#EEF2F4; --ink-2:#B9C3CA; --ink-3:#85939C;
+  --rule:#2C3A45; --accent:#5FB6D1; --accent-ink:#8ED0E4; --amber:#E2A24E; --amber-bg:#2A2419; --tint:#1C2E37; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;margin:0;
+  padding-block:0 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-stretch:112.5%;text-wrap:balance;margin:0;line-height:1.1}
+h1{font-size:clamp(34px,5vw,56px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(22px,3vw,30px);font-weight:700}
+h3{font-size:19px;font-weight:700}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+p{margin:0;max-width:66ch}
+.muted{color:var(--ink-2)}
+
+/* header */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:20px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.top .name{font-family:var(--display);font-stretch:112.5%;font-weight:700;font-size:15px;letter-spacing:.02em}
+.top nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+.top nav a{color:var(--ink-2);text-decoration:none}
+.top nav a:hover{color:var(--accent-ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:40px;padding-block:56px 48px;align-items:start}
+.hero .lede{font-size:19px;color:var(--ink-2);margin-top:20px;max-width:56ch}
+.hero .meta{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 22px;font-family:var(--mono);font-size:13px;color:var(--ink-2)}
+.hero .meta b{color:var(--ink);font-weight:500}
+.portrait{aspect-ratio:4/5;max-width:100%;border:1px solid var(--rule);background:var(--paper);display:flex;align-items:flex-end;padding:16px;position:relative;overflow:hidden}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.portrait .cap{position:relative;font-family:var(--mono);font-size:12px;color:var(--ink-3);background:var(--paper);padding:4px 8px;border:1px solid var(--rule)}
+
+.years{margin-top:26px;max-width:56ch}
+.years .nums{display:flex;gap:32px;flex-wrap:wrap;margin-bottom:14px}
+.years .nums>div{display:flex;align-items:baseline;gap:10px;min-width:0}
+.years .big{font-family:var(--display);font-stretch:112.5%;font-weight:700;font-size:44px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.years .big.a{color:var(--accent)}
+.years .nums span:not(.big){font-size:14px;color:var(--ink-2);max-width:20ch;line-height:1.3}
+.years .grid{display:grid;grid-template-columns:repeat(18,minmax(0,1fr));gap:3px}
+.years .grid i{display:block;height:18px;background:var(--rule)}
+.years .grid i.a{background:var(--accent)}
+.years .ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:6px}
+
+/* results strip */
+.strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.strip>div{padding:22px 18px 20px;border-right:1px solid var(--rule);min-width:0}
+.strip>div:last-child{border-right:0}
+.strip .num{font-family:var(--display);font-stretch:112.5%;font-weight:700;font-size:34px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.strip .num small{font-size:16px;font-weight:500;color:var(--ink-2);margin-left:6px}
+.strip .lbl{margin-top:8px;font-size:13.5px;color:var(--ink-2)}
+.strip .lbl span{color:var(--amber);font-family:var(--mono);font-size:12px}
+
+/* sections */
+section{padding-block:56px 0}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;align-items:end;padding-bottom:18px;border-bottom:1px solid var(--rule);margin-bottom:28px}
+.sec-head p{color:var(--ink-2)}
+
+/* cases */
+.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;padding-block:28px 36px;border-bottom:1px solid var(--rule)}
+.case:last-of-type{border-bottom:0}
+.case .text{min-width:0}
+.case h3{margin-top:6px}
+.case .ctx{color:var(--ink-2);margin-top:6px;font-size:15px}
+.case dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:10px 16px;margin:18px 0 0;font-size:15px}
+.case dt{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding-top:3px}
+.case dd{margin:0;color:var(--ink);min-width:0}
+.case dd.result{color:var(--ink);font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.tag{font-family:var(--mono);font-size:12px;padding:3px 8px;border:1px solid var(--rule);color:var(--ink-2);border-radius:3px}
+.figure{min-width:0;border:1px solid var(--rule);background:var(--paper);padding:16px;display:flex;flex-direction:column;gap:10px}
+.figure svg{width:100%;height:auto;display:block;max-width:100%}
+.figure .cap{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+.figure img{max-width:100%;height:auto;border:1px solid var(--rule)}
+
+/* how */
+.how{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--rule);background:var(--paper)}
+.how>div{padding:20px 18px;border-right:1px solid var(--rule);min-width:0}
+.how>div:last-child{border-right:0}
+.how .n{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.1em}
+.how h3{font-size:16px;margin-top:8px}
+.how p{font-size:14px;color:var(--ink-2);margin-top:8px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.skills h3{font-size:15px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+.skills ul{list-style:none;margin:12px 0 0;padding:0;font-size:15px;display:grid;gap:6px;color:var(--ink-2)}
+.skills li b{color:var(--ink);font-weight:500}
+
+/* ways to work */
+.ways{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--rule);background:var(--paper)}
+.ways>div{padding:22px 22px 24px;border-right:1px solid var(--rule);min-width:0}
+.ways>div:last-child{border-right:0}
+.ways h3{margin-top:8px;font-size:18px}
+.ways p{font-size:15px;color:var(--ink-2);margin-top:10px}
+.ways ul{margin:12px 0 0;padding-left:18px;font-size:15px;color:var(--ink-2);display:grid;gap:5px}
+.ways .sub{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:16px}
+@media (max-width:860px){.ways{grid-template-columns:1fr}.ways>div{border-right:0;border-bottom:1px solid var(--rule)}.ways>div:last-child{border-bottom:0}}
+
+/* background / contact */
+.bg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px}
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:15px}
+.timeline li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:12px}
+.timeline .yr{font-family:var(--mono);font-size:13px;color:var(--ink-3);padding-top:2px}
+.contact{background:var(--tint);border:1px solid var(--rule);padding:22px}
+.contact .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px;font-size:15px}
+.contact code{font-family:var(--mono);font-size:14px;background:var(--paper);border:1px solid var(--rule);padding:4px 8px;user-select:all}
+.contact button{font:inherit;font-size:13px;font-family:var(--mono);padding:5px 10px;border:1px solid var(--accent);background:var(--paper);color:var(--accent-ink);cursor:pointer;border-radius:3px}
+.contact button:hover{background:var(--tint)}
+.open{margin-top:16px;font-size:14px;color:var(--ink-2)}
+.open b{color:var(--ink);font-weight:500}
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:12px;color:var(--ink-3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* svg schematic tokens */
+.sch .box{fill:var(--paper);stroke:var(--ink-2);stroke-width:1.2}
+.sch .box.hi{fill:var(--amber-bg);stroke:var(--amber);stroke-width:1.4}
+.sch .box.tint{fill:var(--tint);stroke:var(--accent)}
+.sch .ln{stroke:var(--ink-3);stroke-width:1.2;fill:none}
+.sch .ln.hi{stroke:var(--amber);stroke-width:1.6}
+.sch text{font-family:var(--mono);font-size:11px;fill:var(--ink)}
+.sch text.s{fill:var(--ink-3);font-size:10px}
+.sch text.hd{font-family:var(--body);font-weight:600;font-size:12px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:28px}
+  .portrait{max-width:320px}
+  .strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .strip>div:nth-child(2){border-right:0}
+  .strip>div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .sec-head,.case,.bg{grid-template-columns:1fr}
+  .how{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .how>div:nth-child(2){border-right:0}
+  .how>div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .skills{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .how{grid-template-columns:1fr}
+  .how>div{border-right:0;border-bottom:1px solid var(--rule)}
+  .how>div:last-child{border-bottom:0}
+  .case dl{grid-template-columns:1fr;gap:4px 0}
+  .case dt{padding-top:10px}
+  .timeline li{grid-template-columns:1fr;gap:2px}
+}
+@media (prefers-reduced-motion:no-preference){ .contact button{transition:background .15s} }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="top">
+    <div class="name">ANNA AKPINAR</div>
+    <nav aria-label="Sections">
+      <a href="#cases">Cases</a><a href="#how">How I work</a><a href="#skills">Skills</a><a href="#ways">Work together</a><a href="#background">Background</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" style="padding-top:48px">
+    <div>
+      <div class="eyebrow">Business processes · Automation · AI — construction &amp; development</div>
+      <h1 style="margin-top:14px">I turn the way a company works into a working system.</h1>
+      <p class="lede">Eighteen years inside construction and development, five building the systems that run it: directly with owners and CEOs, with a 360° view from design to delivery. I interview the team, draw the process, build it with them piece by piece, and measure the result on the real task.</p>
+      <div class="years" role="img" aria-label="Timeline 2008 to 2026: 18 years in construction and development; the last 5 years in process automation and AI">
+        <div class="nums"><div><span class="big">18</span><span>years in construction &amp; development</span></div><div><span class="big a">5</span><span>of them in process automation &amp; AI</span></div></div>
+        <div class="grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i></div>
+        <div class="ticks" aria-hidden="true"><span>2008</span><span>2026</span></div>
+      </div>
+      <div class="meta">
+        <span><b>Working with</b> UK companies, remote, since 2024</span>
+        <span><b>Languages</b> EN · RU · TR</span>
+      </div>
+    </div>
+    <div class="portrait">
+      <img src="photo.jpg" alt="Anna Akpinar" width="880" height="1100">
+      <span class="cap">Anna Akpinar (Sizova)</span>
+    </div>
+  </section>
+
+  <div class="strip" aria-label="Measured results">
+    <div><div class="num">200+<small style="display:block;margin:4px 0 0">development projects</small></div><div class="lbl">on SmartEquity, the platform I designed for development-project origination and delivery <span>· Smartsheet · 2024–26</span></div></div>
+    <div><div class="num">40<small>min</small></div><div class="lbl">per project analysis, down from 2–3 hours <span>· Smartsheet · 2024–26</span></div></div>
+    <div><div class="num">10<small>min</small></div><div class="lbl">to assemble an investor report, down from 1 hour <span>· Smartsheet · 2024–26</span></div></div>
+    <div><div class="num">2<small>× faster</small></div><div class="lbl">document search with an LLM regulations navigator, measured on 5 users by time tracking <span>· Bitrix24 · LLM · 2026</span></div></div>
+  </div>
+
+  <section id="cases">
+    <div class="sec-head">
+      <h2>Three cases</h2>
+      <p>Each one started with people doing the work by hand and ended with a system they run themselves. Client data and figures are shown only where the owners agreed; schematics stand in for screenshots.</p>
+    </div>
+
+    <article class="case">
+      <div class="text">
+        <div class="eyebrow">01 · Development finance · 2024 – present</div>
+        <h3>SmartEquity — one platform for 200+ development projects</h3>
+        <p class="ctx">InDome Capital, UK. Project analysis, due diligence and investor reporting lived in separate spreadsheets and inboxes; every deal was analysed from scratch.</p>
+        <dl>
+          <dt>Built</dt><dd>A Smartsheet-based platform covering the whole lifecycle, Origination → Delivery → Exit: origination register with automated appraisal and indicative term sheet; a data-collection system for delivery: a separate sheet per project for the budget, the work programme (with conditions tracker) and risks, plus registers for marketing plan, minutes and lessons learnt, all rolled up through reports into one dashboard that shows the overall health of the project; exit calculations (actual profit, redemption, buy-to-let scenario); investor dashboards and reports assembled from project data. The system is not only for internal use: developers run their projects in it, estate agents keep the marketing plan and price control, banks see the financial reporting, and investors get the same live dashboard, so every party works in one platform on one set of data. I am the author of the system: designed and built from scratch as Head of Operations, reporting to the owner; three project managers now run their projects in it.</dd>
+          <dt>Result</dt><dd class="result">200+ projects in origination and 10 in delivery, £20M+ of projects on the platform. Project analysis 2–3 h → 40 min; at 1–2 analyses a day that frees roughly 30–100 hours of project-manager time a month (estimate). Investor report 1 h → 10 min. One source of truth for monitoring and reporting across the company.</dd>
+        </dl>
+        <div class="tags"><span class="tag">Smartsheet</span><span class="tag">process design</span><span class="tag">dashboards</span><span class="tag">investor reporting</span><span class="tag">due diligence</span></div>
+      </div>
+      <div style="display:grid;gap:16px;min-width:0;align-content:start">
+      <figure class="figure" style="margin:0">
+        <a href="smartequity-pipeline.jpg" target="_blank" rel="noopener"><img src="smartequity-pipeline.jpg" alt="SmartEquity investor dashboard: origination pipeline with project rank, ID, number of plots, site plans and CGIs; addresses, comments and financial columns blurred" width="815" height="909" loading="lazy"></a>
+        <figcaption class="cap">Fig. 1 — investor view of the origination pipeline (excerpt), generated from the Smartsheet project data model: rank, project ID, plots and site plans per project. Addresses, descriptions and figures blurred on purpose. Click to open full size.</figcaption>
+      </figure>
+      <figure class="figure" style="margin:0">
+        <svg class="sch" viewBox="0 0 640 460" role="img" aria-label="SmartEquity data flow: project sheets for budget, work programme, risks, marketing plan and minutes feed reports that flag problem points, which feed one project dashboard; developers, estate agents, banks and investors all work in the same platform on the same data"><text x="0" y="16" class="hd" style="font-size:13px;letter-spacing:.06em">PROJECT SHEETS</text><text x="240" y="16" class="hd" style="font-size:13px;letter-spacing:.06em">REPORTS</text><text x="450" y="16" class="hd" style="font-size:13px;letter-spacing:.06em">DASHBOARD</text><rect class="box" x="0" y="32" width="200" height="44" rx="4"/><text x="10" y="51" class="hd" style="font-size:14px">Budget breakdown</text><text x="10" y="68" class="s" style="font-size:11.5px">valuation › plot › item</text><rect class="box tint" x="240" y="32" width="160" height="44" rx="4"/><text x="250" y="51" class="hd" style="font-size:14px">Budget report</text><text x="250" y="68" class="s" style="font-size:11.5px">flags overruns</text><path class="ln" d="M200 54 H240"/><path class="ln" d="M234 50 L240 54 L234 58"/><path class="ln" d="M400 54 H450"/><path class="ln" d="M444 50 L450 54 L444 58"/><text x="205" y="47" class="s" style="font-size:10.5px;fill:var(--accent-ink)">auto</text><text x="411" y="47" class="s" style="font-size:10.5px;fill:var(--accent-ink)">flags</text><rect class="box" x="0" y="84" width="200" height="44" rx="4"/><text x="10" y="103" class="hd" style="font-size:14px">Work programme</text><text x="10" y="120" class="s" style="font-size:11.5px">with conditions tracker</text><rect class="box tint" x="240" y="84" width="160" height="44" rx="4"/><text x="250" y="103" class="hd" style="font-size:14px">Programme report</text><text x="250" y="120" class="s" style="font-size:11.5px">flags delays</text><path class="ln" d="M200 106 H240"/><path class="ln" d="M234 102 L240 106 L234 110"/><path class="ln" d="M400 106 H450"/><path class="ln" d="M444 102 L450 106 L444 110"/><text x="205" y="99" class="s" style="font-size:10.5px;fill:var(--accent-ink)">auto</text><text x="411" y="99" class="s" style="font-size:10.5px;fill:var(--accent-ink)">flags</text><rect class="box" x="0" y="136" width="200" height="44" rx="4"/><text x="10" y="155" class="hd" style="font-size:14px">Risk register</text><text x="10" y="172" class="s" style="font-size:11.5px">status · owner · actions</text><rect class="box tint" x="240" y="136" width="160" height="44" rx="4"/><text x="250" y="155" class="hd" style="font-size:14px">Risks &amp; actions</text><text x="250" y="172" class="s" style="font-size:11.5px">flags open issues</text><path class="ln" d="M200 158 H240"/><path class="ln" d="M234 154 L240 158 L234 162"/><path class="ln" d="M400 158 H450"/><path class="ln" d="M444 154 L450 158 L444 162"/><text x="205" y="151" class="s" style="font-size:10.5px;fill:var(--accent-ink)">auto</text><text x="411" y="151" class="s" style="font-size:10.5px;fill:var(--accent-ink)">flags</text><rect class="box" x="0" y="188" width="200" height="44" rx="4"/><text x="10" y="207" class="hd" style="font-size:14px">Marketing plan</text><text x="10" y="224" class="s" style="font-size:11.5px">prices · sales</text><rect class="box tint" x="240" y="188" width="160" height="44" rx="4"/><text x="250" y="207" class="hd" style="font-size:14px">Price control</text><text x="250" y="224" class="s" style="font-size:11.5px">flags low prices</text><path class="ln" d="M200 210 H240"/><path class="ln" d="M234 206 L240 210 L234 214"/><path class="ln" d="M400 210 H450"/><path class="ln" d="M444 206 L450 210 L444 214"/><text x="205" y="203" class="s" style="font-size:10.5px;fill:var(--accent-ink)">auto</text><text x="411" y="203" class="s" style="font-size:10.5px;fill:var(--accent-ink)">flags</text><rect class="box" x="0" y="240" width="200" height="44" rx="4"/><text x="10" y="259" class="hd" style="font-size:14px">Minutes · updates</text><text x="10" y="276" class="s" style="font-size:11.5px">contacts · lessons learnt</text><rect class="box tint" x="240" y="240" width="160" height="44" rx="4"/><text x="250" y="259" class="hd" style="font-size:14px">Status report</text><text x="250" y="276" class="s" style="font-size:11.5px">flags stalled items</text><path class="ln" d="M200 262 H240"/><path class="ln" d="M234 258 L240 262 L234 266"/><path class="ln" d="M400 262 H450"/><path class="ln" d="M444 258 L450 262 L444 266"/><text x="205" y="255" class="s" style="font-size:10.5px;fill:var(--accent-ink)">auto</text><text x="411" y="255" class="s" style="font-size:10.5px;fill:var(--accent-ink)">flags</text><rect class="box tint" x="450" y="32" width="190" height="252" rx="4"/><text x="460" y="54" class="hd" style="font-size:14px">Project dashboard</text><text x="460" y="86" class="s" style="font-size:12.5px">• Project health</text><text x="460" y="114" class="s" style="font-size:12.5px">• Budget vs actual</text><text x="460" y="142" class="s" style="font-size:12.5px">• Programme variance</text><text x="460" y="170" class="s" style="font-size:12.5px">• Prices vs plan (GDV)</text><text x="460" y="198" class="s" style="font-size:12.5px">• Risks and actions</text><text x="460" y="226" class="s" style="font-size:12.5px">• Planning conditions</text><text x="460" y="268" class="hd" style="font-size:12px;fill:var(--amber)">Problem areas on top</text><path class="ln hi" d="M320 288 V312"/><path class="ln hi" d="M75 312 H565"/><text x="320" y="306" text-anchor="middle" class="hd" style="font-size:12px;fill:var(--amber)">one platform · one set of data</text><path class="ln hi" d="M75 312 V330"/><path class="ln hi" d="M71 324 L75 330 L79 324"/><rect class="box hi" x="0" y="330" width="150" height="46" rx="4"/><text x="10" y="349" class="hd" style="font-size:14px">Developers</text><text x="10" y="366" class="s" style="font-size:11.5px">run projects in it</text><path class="ln hi" d="M238 312 V330"/><path class="ln hi" d="M234 324 L238 330 L242 324"/><rect class="box hi" x="163" y="330" width="150" height="46" rx="4"/><text x="173" y="349" class="hd" style="font-size:14px">Estate agents</text><text x="173" y="366" class="s" style="font-size:11.5px">keep prices, sales</text><path class="ln hi" d="M401 312 V330"/><path class="ln hi" d="M397 324 L401 330 L405 324"/><rect class="box hi" x="326" y="330" width="150" height="46" rx="4"/><text x="336" y="349" class="hd" style="font-size:14px">Banks</text><text x="336" y="366" class="s" style="font-size:11.5px">see financial reports</text><path class="ln hi" d="M564 312 V330"/><path class="ln hi" d="M560 324 L564 330 L568 324"/><rect class="box hi" x="489" y="330" width="150" height="46" rx="4"/><text x="499" y="349" class="hd" style="font-size:14px">Investors</text><text x="499" y="366" class="s" style="font-size:11.5px">see live dashboard</text><text x="0" y="402" class="s" style="font-size:12px">One platform, one set of data for every party: developers run their projects</text><text x="0" y="420" class="s" style="font-size:12px">in it, agents keep the marketing plan and prices, banks and investors see the</text><text x="0" y="438" class="s" style="font-size:12px">financial reporting and the live dashboard. Reports flag problems so none hide.</text></svg>
+        <figcaption class="cap">Fig. 2 — how project information is collected in SmartEquity: separate sheets for budget, programme, risks and registers; reports that sort and summarise them; and one dashboard with the overall health of the project. Developers, estate agents, banks and investors all work in the same platform on the same data, not only the internal team.</figcaption>
+      </figure>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="text">
+        <div class="eyebrow">02 · Property developer &amp; landlord · Feb – Jun 2026</div>
+        <h3>Fishbone — from manual Excel to an end-to-end management system</h3>
+        <p class="ctx">UK developer with a rental portfolio. The owners came to me because they wanted to scale: everything ran by hand, and they saw that growth was impossible without automating it. Sourcing, budgets and compliance were tracked in spreadsheets; profitability was estimated, not calculated.</p>
+        <dl>
+          <dt>Built</dt><dd>Working directly with the owners, a three-module Smartsheet system. <b>Sourcing:</b> deal register with automated appraisal per property. <b>Delivery:</b> a 1,200-item cost classifier with material and labour rates (a budget is assembled by entering item codes, and the rates are pulled in automatically), plan-vs-actual budget template, project database auto-filled from sourcing, risk and lessons-learnt registers, work programme. <b>Property management:</b> portfolio register with compliance tracking (gas, EPC, EICR, deposits, right-to-rent, insurance), quarterly inspection checklists and actions.</dd>
+          <dt>Result</dt><dd class="result">Project profitability recalculated; costing errors and unaccounted works found. Appraisal and reporting 2× faster. Full transparency for the owners. Handed over and completed in four months.</dd>
+        </dl>
+        <div class="tags"><span class="tag">AS-IS / TO-BE</span><span class="tag">Smartsheet</span><span class="tag">cost classifier</span><span class="tag">compliance register</span><span class="tag">owner-facing</span></div>
+      </div>
+      <div style="display:grid;gap:16px;min-width:0;align-content:start">
+      <figure class="figure" style="margin:0">
+        <a href="fishbone-bpmn.jpg" target="_blank" rel="noopener"><img src="fishbone-bpmn.jpg" alt="BPMN process map for Fishbone: Sourcing and Investment Committee swimlanes, from property registration through due diligence to investment decision" width="1400" height="758" loading="lazy"></a>
+        <figcaption class="cap">Fig. 3 — start of the TO-BE process map (BPMN): a new property passes the hedge test in Sourcing, then goes to the Investment Committee; every step names the Smartsheet register it writes to. Full map has 4 swimlanes. Click to open full size.</figcaption>
+      </figure>
+      <figure class="figure" style="margin:0">
+        <a href="fishbone-budget2.jpg" target="_blank" rel="noopener"><img src="fishbone-budget2.jpg" alt="Fishbone project budget in Smartsheet: cost classifier from sections to sub-sections, work items and materials, with labour and plant rates, plan vs actual and health indicators; figures blurred" width="1500" height="568" loading="lazy"></a>
+        <figcaption class="cap">Fig. 4 — project budget in Smartsheet, assembled from the 1,200-item cost classifier: you enter an item code and its rate is pulled into the budget automatically. Ten sections down to work items and materials, with labour and plant rates, commercial vs internal plan, actual vs plan and a health flag. Rates, totals and project code blurred on purpose. Click to open full size.</figcaption>
+      </figure>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="text">
+        <div class="eyebrow">03 · Engineering &amp; design company · Sep 2026 – present</div>
+        <h3>ROSECO — a regulations navigator, then the company's AI model</h3>
+        <p class="ctx">A repeat engagement: I came back to the company in September 2026 after a break, having worked there in 2019–2024. I came in to digitalise the company end to end and prepare it for AI agents in day-to-day operations. The regulations navigator was only the first pilot: engineers spent a large share of their time searching internal regulations and standards, and the company had no safe way to start with AI. The larger work behind it is preparing the infrastructure and setting up the company's processes so that AI agents can work in them.</p>
+        <dl>
+          <dt>Built</dt><dd>Working alongside the CEO. In three weeks: compared five AI tools against four guard-rails (document status, scope boundary, source citation, no invented facts), then built a bot inside Bitrix24 (CRM/workflow platform) with the people who use it. The "document assistant": vector index of 70 current regulations (1,609 fragments), answers with the document's code, name and status; runs on the Bitrix24 model, so no data leaves the company. Then the groundwork for AI in day-to-day operations: process maps, AI-use scenarios by function, and an anonymisation policy for cloud LLMs defining which data may leave the company.</dd>
+          <dt>Result</dt><dd class="result">Document search 2× faster, measured on 5 users by time tracking. In the first three days 7 employees asked 101 questions; median answer 6.5 s; 100% of answers on indexed documents cite the source and its status. Side result: the bot surfaced 27 ambiguities in 7 process diagrams (3 high-priority), now with the process owners. The company's LLM-based knowledge model and rollout infrastructure are in progress.</dd>
+        </dl>
+        <div class="tags"><span class="tag">LLM</span><span class="tag">vector search</span><span class="tag">Bitrix24 bots</span><span class="tag">AI governance</span><span class="tag">enablement</span></div>
+      </div>
+      <div style="display:grid;gap:16px;min-width:0;align-content:start">
+      <figure class="figure" style="margin:0">
+        <svg class="sch" viewBox="0 0 640 416" role="img" aria-label="ROSECO AI roadmap: 1 pilot regulations navigator, done; 2 AI-use scenarios by function, done; 3 infrastructure for safe AI, in progress; 4 company LLM model, in progress; 5 process audit to find bottlenecks and decide where AI fits, next; 6 AI agents in operations and design, later"><path class="ln" d="M22 40 V387"/><rect class="box tint" x="0" y="8" width="640" height="58" rx="4"/><circle cx="22" cy="37" r="12" fill="var(--accent)"/><text x="22" y="42" text-anchor="middle" style="fill:#fff;font-size:13px;font-weight:600">1</text><text x="48" y="33" class="hd" style="font-size:15px">Pilot: regulations navigator</text><text x="48" y="52" class="s" style="font-size:12px">Bitrix24 bot over 70 current regulations</text><text x="626" y="41" text-anchor="end" class="hd" style="font-size:11.5px;letter-spacing:.08em;fill:var(--accent)">DONE</text><rect class="box tint" x="0" y="78" width="640" height="58" rx="4"/><circle cx="22" cy="107" r="12" fill="var(--accent)"/><text x="22" y="112" text-anchor="middle" style="fill:#fff;font-size:13px;font-weight:600">2</text><text x="48" y="103" class="hd" style="font-size:15px">AI-use scenarios by function</text><text x="48" y="122" class="s" style="font-size:12px">30 scenarios, ranked from easiest to hardest start</text><text x="626" y="111" text-anchor="end" class="hd" style="font-size:11.5px;letter-spacing:.08em;fill:var(--accent)">DONE</text><rect class="box hi" x="0" y="148" width="640" height="58" rx="4"/><circle cx="22" cy="177" r="12" fill="var(--amber)"/><text x="22" y="182" text-anchor="middle" style="fill:#fff;font-size:13px;font-weight:600">3</text><text x="48" y="173" class="hd" style="font-size:15px">Infrastructure for safe AI</text><text x="48" y="192" class="s" style="font-size:12px">environments, access, anonymisation policy, role model</text><text x="626" y="181" text-anchor="end" class="hd" style="font-size:11.5px;letter-spacing:.08em;fill:var(--amber)">IN PROGRESS</text><rect class="box hi" x="0" y="218" width="640" height="58" rx="4"/><circle cx="22" cy="247" r="12" fill="var(--amber)"/><text x="22" y="252" text-anchor="middle" style="fill:#fff;font-size:13px;font-weight:600">4</text><text x="48" y="243" class="hd" style="font-size:15px">Company LLM model</text><text x="48" y="262" class="s" style="font-size:12px">versioned model of processes, roles and projects</text><text x="626" y="251" text-anchor="end" class="hd" style="font-size:11.5px;letter-spacing:.08em;fill:var(--amber)">IN PROGRESS</text><rect class="box" x="0" y="288" width="640" height="58" rx="4" stroke-dasharray="5 4"/><circle cx="22" cy="317" r="12" fill="var(--ink-3)"/><text x="22" y="322" text-anchor="middle" style="fill:#fff;font-size:13px;font-weight:600">5</text><text x="48" y="313" class="hd" style="font-size:15px">Process audit</text><text x="48" y="332" class="s" style="font-size:12px">find bottlenecks; decide where AI fits and where it does not</text><text x="626" y="321" text-anchor="end" class="hd" style="font-size:11.5px;letter-spacing:.08em;fill:var(--ink-3)">NEXT</text><rect class="box" x="0" y="358" width="640" height="58" rx="4" stroke-dasharray="5 4"/><circle cx="22" cy="387" r="12" fill="var(--ink-3)"/><text x="22" y="392" text-anchor="middle" style="fill:#fff;font-size:13px;font-weight:600">6</text><text x="48" y="383" class="hd" style="font-size:15px">AI agents in operations and design</text><text x="48" y="402" class="s" style="font-size:12px">incl. BIM / 3D design, across Bitrix24 and other systems</text><text x="626" y="391" text-anchor="end" class="hd" style="font-size:11.5px;letter-spacing:.08em;fill:var(--ink-3)">LATER</text></svg>
+        <figcaption class="cap">Fig. 5 — the route behind the pilot: from a regulations navigator to a company-wide AI model and agents in daily operations. The pilot was the first of six steps.</figcaption>
+      </figure>
+      <figure class="figure" style="margin:0">
+        <svg class="sch" viewBox="0 0 920 560" role="img" aria-label="Architecture of the document-assistant bot: Bitrix24 cloud, pilot owner's computer, external services not used; six numbered steps from question to answer">
+          <!-- columns -->
+          <rect x="8" y="8" width="300" height="470" rx="6" fill="var(--tint)" stroke="var(--rule)"/>
+          <text x="20" y="28" class="hd">BITRIX24 · CLOUD</text>
+          <rect x="322" y="8" width="380" height="470" rx="6" fill="var(--amber-bg)" stroke="var(--rule)"/>
+          <text x="334" y="28" class="hd">PILOT OWNER'S COMPUTER (server later)</text>
+          <rect x="716" y="8" width="196" height="470" rx="6" fill="none" stroke="var(--rule)" stroke-dasharray="4 3"/>
+          <text x="728" y="28" class="hd">EXTERNAL SERVICES</text>
+          <!-- Bitrix column -->
+          <rect class="box" x="28" y="48" width="260" height="46" rx="4"/><text x="40" y="67" class="hd">Employee</text><text x="40" y="83" class="s">asks in a Bitrix24 chat</text>
+          <rect class="box" x="28" y="138" width="260" height="60" rx="4"/><text x="40" y="157" class="hd">"Document assistant" bot</text><text x="40" y="173" class="s">chat interface only; fetch mode,</text><text x="40" y="187" class="s">no public address needed</text>
+          <rect class="box hi" x="28" y="380" width="260" height="78" rx="4"/><text x="40" y="399" class="hd">Bitrix24 model (bitrixgpt)</text><text x="40" y="415" class="s">AI router inside the Bitrix24 cloud;</text><text x="40" y="429" class="s">usage charged to the portal's monthly</text><text x="40" y="443" class="s">AI quota</text>
+          <!-- Computer column -->
+          <rect class="box" x="342" y="48" width="340" height="46" rx="4"/><text x="354" y="67" class="hd">Logs</text><text x="354" y="83" class="s">who asked what, what was answered; token usage</text>
+          <rect class="box" x="342" y="128" width="340" height="60" rx="4"/><text x="354" y="147" class="hd">bot_fetch.py</text><text x="354" y="163" class="s">polls the bot every 5 s, handles questions in turn,</text><text x="354" y="177" class="s">sends the answer back to the chat</text>
+          <rect class="box" x="342" y="222" width="340" height="60" rx="4"/><text x="354" y="241" class="hd">answer.py + instruction</text><text x="354" y="257" class="s">answer rules, source citation, scope boundary,</text><text x="354" y="271" class="s">25 s model timeout</text>
+          <rect class="box tint" x="342" y="316" width="340" height="60" rx="4"/><text x="354" y="335" class="hd">Index &amp; search</text><text x="354" y="351" class="s">vector (e5-small, local) + keywords + titles</text><text x="354" y="365" class="s">1,609 fragments · 70 current documents</text>
+          <rect class="box" x="342" y="406" width="340" height="30" rx="4"/><text x="354" y="426" class="hd">index.py <tspan class="s">— reads docs + status register, builds the index</tspan></text>
+          <rect class="box" x="342" y="446" width="340" height="24" rx="4"/><text x="354" y="462" class="s">Documents + status register — a folder on the computer</text>
+          <!-- External -->
+          <rect class="box" x="728" y="200" width="172" height="78" rx="4" stroke-dasharray="4 3"/><text x="740" y="221" class="hd">External AI:</text><text x="740" y="237" class="hd">not used</text><text x="740" y="255" class="s">no OpenAI, no proxies;</text><text x="740" y="269" class="s">data stays in Bitrix24</text>
+          <!-- arrows -->
+          <path class="ln" d="M100 94 V138"/><path class="ln" d="M96 132 L100 138 L104 132"/>
+          <circle cx="84" cy="116" r="8" fill="var(--accent)"/><text x="81" y="120" style="fill:#fff;font-size:10px">1</text>
+          <path class="ln" d="M288 158 H342"/><path class="ln" d="M336 154 L342 158 L336 162"/>
+          <circle cx="300" cy="146" r="8" fill="var(--accent)"/><text x="297" y="150" style="fill:#fff;font-size:10px">2</text>
+          <path class="ln" d="M512 188 V222"/><path class="ln" d="M508 216 L512 222 L516 216"/>
+          <path class="ln" d="M512 282 V316"/><path class="ln" d="M508 310 L512 316 L516 310"/><path class="ln" d="M508 288 L512 282 L516 288"/>
+          <circle cx="530" cy="299" r="8" fill="var(--accent)"/><text x="527" y="303" style="fill:#fff;font-size:10px">3</text><text x="544" y="303" class="s">finds fragments</text>
+          <path class="ln" d="M512 376 V406"/><path class="ln" d="M508 382 L512 376 L516 382"/>
+          <path class="ln" d="M512 436 V446"/>
+          <path class="ln" d="M512 128 V94"/><path class="ln" d="M508 100 L512 94 L516 100"/>
+          <path class="ln hi" d="M342 252 H158 V380"/><path class="ln hi" d="M154 374 L158 380 L162 374"/>
+          <circle cx="250" cy="252" r="8" fill="var(--amber)"/><text x="247" y="256" style="fill:#fff;font-size:10px">4</text><text x="166" y="246" class="s">question + fragments</text>
+          <path class="ln hi" d="M200 380 V300 H342"/><path class="ln hi" d="M336 296 L342 300 L336 304"/>
+          <circle cx="212" cy="288" r="8" fill="var(--amber)"/><text x="209" y="292" style="fill:#fff;font-size:10px">5</text><text x="224" y="292" class="s">model answer</text>
+          <path class="ln" d="M342 172 H288"/><path class="ln" d="M294 168 L288 172 L294 176"/>
+          <path class="ln" d="M160 138 V94"/><path class="ln" d="M156 100 L160 94 L164 100"/>
+          <circle cx="176" cy="116" r="8" fill="var(--accent)"/><text x="173" y="120" style="fill:#fff;font-size:10px">6</text><text x="190" y="120" class="s">answer + source</text>
+          <!-- legend -->
+          <text x="8" y="500" class="hd">How it works</text>
+          <text x="8" y="518" class="s">1 Employee asks the bot in chat · 2 a script on the computer fetches the question (no public address or tunnel) · 3 answer.py searches the local index,</text>
+          <text x="8" y="533" class="s">which holds only documents with status "current" · 4 question, instruction and fragments go to the Bitrix24 model · 5 the model answers ·</text>
+          <text x="8" y="548" class="s">6 the script posts the answer with source and document status (or "not found") to the chat. Nothing is sent to external AI services.</text>
+        </svg>
+        <figcaption class="cap">Fig. 6 — architecture of the document-assistant bot (pilot, Oct 2026): Bitrix24 chat → local vector index of 70 current regulations → answer with source and document status; data never leaves the Bitrix24 contour.</figcaption>
+      </figure>
+      </div>
+    </article>
+  </section>
+
+  <section id="how">
+    <div class="sec-head">
+      <h2>How I work</h2>
+      <p>Direct work with the owner, 18 years of construction knowledge from the inside, and a systematic, structured approach. Nothing is built before the process is drawn, and nothing counts as done until the team runs it without me.</p>
+    </div>
+    <div class="how">
+      <div><div class="n">STEP 1</div><h3>Interview and audit</h3><p>Sit down with the owner and the people who do the work. Draw AS-IS in BPMN, find the bottlenecks with Lean and Six Sigma tools (waste, delays, errors), and decide where automation or AI pays off and where it does not.</p></div>
+      <div><div class="n">STEP 2</div><h3>Design TO-BE with owner and team</h3><p>The owner shows where the company is heading and which targets matter; the team shows the everyday operational pains. I work at both levels, with decision-makers and the people who do the work, and tie them into one target process with roles and approvals, agreed before anything is built.</p></div>
+      <div><div class="n">STEP 3</div><h3>Build in small increments, with the team</h3><p>Scrum-style: I do not wait for the whole system to be ready. Work runs in short cycles: plan a small piece, build it, demo it to the team, collect feedback, adjust, then take the next piece. Each piece goes live and is tested before the next one is added.</p></div>
+      <div><div class="n">STEP 4</div><h3>Measure and hand over</h3><p>Measure, improve and lock in the result on the real task (DMAIC logic), then leave a system the team runs without me. Where the work continues, I check after a few weeks whether it is still in use, and retire what is not.</p></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <h2>Skills and tools</h2>
+      <p>Hands-on builder, not a software engineer; I pick up new tools fast.</p>
+    </div>
+    <div class="skills">
+      <div><h3>Process &amp; operations</h3><ul><li><b>BPMN, AS-IS / TO-BE</b> (Visio), stakeholder interviews</li><li>SOP and template libraries, operating-model design</li><li>Programme and project management, teams of 3–40</li><li>Plan-vs-actual budgets, KPI dashboards, management and investor reporting</li></ul></div>
+      <div><h3>Automation &amp; AI</h3><ul><li><b>Smartsheet</b> (advanced: cross-sheet formulas, automations, dashboards)</li><li><b>Bitrix24</b>: workflows, CRM, bots, integrations</li><li><b>Pipedrive</b>: CRM automation</li><li>Vector-search knowledge bases, LLM pilots, tool gateways; <b>Claude Code</b> for building automations</li><li>AI-use scenarios, anonymisation policies, requirements for IT/Security</li></ul></div>
+      <div><h3>Domain</h3><ul><li>Construction and property development, 18 years</li><li>Development finance: due diligence, investor materials, exit scenarios</li><li>BIM / 4D (ISO 19650 context)</li><li>English professional · Russian native · Turkish basic</li></ul></div>
+    </div>
+  </section>
+
+  <section id="ways">
+    <div class="sec-head">
+      <h2>Ways to work together</h2>
+      <p>The same method, two formats: I can lead the function inside your company, or run a fixed-scope project and hand over a system your team owns.</p>
+    </div>
+    <div class="ways">
+      <div>
+        <div class="eyebrow">Role</div>
+        <h3>Head / Lead of business processes, digital operations or AI adoption</h3>
+        <p>I build the function from scratch: process architecture, automation platform, team, and the groundwork for AI agents in daily operations. Reporting to the owner or CEO.</p>
+      </div>
+      <div>
+        <div class="eyebrow">Project</div>
+        <h3>Process optimisation &amp; project-control framework</h3>
+        <p>From 3–4 months, depending on the size of the company. It starts with a kick-off brainstorming session, possibly at the company's office, then one or more working sessions a week with the owner and team, depending on the task. The objective is to:</p>
+        <ul><li>identify inefficiencies and operational bottlenecks</li><li>improve process transparency and accountability</li><li>implement practical automation solutions</li><li>establish structured project-management tools</li><li>improve cost and risk control across projects</li></ul>
+        <p><b style="color:var(--ink);font-weight:500">You get:</b> documented processes, a cost-control system, a risk framework, clear approval logic and a working base for growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="background" class="bg-wrap">
+    <div class="sec-head">
+      <h2>Background</h2>
+      <p>Operations roles in construction and development since 2008, with a shift to processes and automation from 2021.</p>
+    </div>
+    <div class="bg">
+      <ul class="timeline">
+        <li><span class="yr">2024 – now</span><span><b>Head of Operations</b>, InDome Capital (UK, remote) · author of SmartEquity, an automated system for managing development-finance loan portfolios, designed from scratch; 3 project managers</span></li>
+        <li><span class="yr">2026 – now</span><span><b>Business Process &amp; AI Consultant</b>, ROSECO (remote) · business transformation and AI adoption, working directly with the CEO</span></li>
+        <li><span class="yr">2026</span><span><b>Business Process Consultant</b>, Fishbone (UK, project) · moved the whole business from manual Excel to an automated management system in Smartsheet: sourcing, delivery, property management</span></li>
+        <li><span class="yr">2019 – 2024</span><span><b>Project Manager &amp; Business Analyst</b>, ROSECO (remote) · BIM/4D projects with 30–40 engineers · Visio, Autodesk<span style="display:block;margin-top:4px">– project-management system built on the company's governing documents</span><span style="display:block">– business-process automation in Bitrix24</span><span style="display:block">– automated costing of commercial proposals</span></span></li>
+        <li><span class="yr">2016 – 2020</span><span><b>Project Manager</b>, AFRY (formerly Pöyry) · international industrial projects, feasibility to state review</span></li>
+        <li><span class="yr">2008 – 2016</span><span>Project and site roles on industrial, commercial and residential turnkey projects (Cryogenic Gas Technologies, Glaskek, Melston Group, Neva-Stroy)</span></li>
+        <li><span class="yr">Education</span><span>Master's in Management with distinction (SPbSUE, 2013) · Professional retraining diploma, Civil &amp; Industrial Construction (SPbPU, 2014) · BIM courses 2020–21</span></li>
+      </ul>
+      <div class="contact" id="contact">
+        <div class="eyebrow">Contact</div>
+        <h3 style="margin-top:8px">Open to Head / Lead roles in business processes, digital operations and AI adoption</h3>
+        <div class="open"><b>Format:</b> remote by contract (UTC+3), or relocation with visa sponsorship (UAE, Cyprus, Singapore). <b>Not looking for</b> sales or business-development roles.</div>
+        <div class="row"><code id="email">annasizova6@gmail.com</code><button type="button" id="copy-email">copy</button></div>
+        <div class="row"><a href="https://www.linkedin.com/in/anna-akpinar/" target="_blank" rel="noopener">linkedin.com/in/anna-akpinar</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Anna Akpinar (Sizova) — portfolio, updated October 2026</span>
+    <span>Client figures published with the owners' agreement; no client documents are reproduced.</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var b=document.getElementById('copy-email'),e=document.getElementById('email');
+  if(!b||!e)return;
+  b.addEventListener('click',function(){
+    var t=e.textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(e);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){b.textContent='copied';setTimeout(function(){b.textContent='copy'},1500)},sel);
+    } else sel();
+  });
+})();
+</script>
+
+</body>
+</html>
