@@ -334,14 +334,20 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--rule);font-fa
     <article class="case">
       <div class="text">
         <div class="eyebrow">04 · Event website · InDome group · 2026</div>
-        <h3>London Investment Forum 2027 — a website built with AI tools</h3>
-        <p class="ctx">For the InDome group: a site for the investment forum (24 March 2027, London) with the programme, ticket formats, a sponsor section and a registration form.</p>
+        <h3>London Investment Forum 2027 — a website with payments, registration and QR check-in, built with AI tools</h3>
+        <p class="ctx">For the InDome group: a site for the investment forum (24 March 2027, London) with the programme, ticket formats, a sponsor section, online payment and guest registration.</p>
         <dl>
-          <dt>Built</dt><dd>I set the brief inside the team and agreed the design with the team. I then built the site in Claude Code, put the code on GitHub and set up automatic deployment to Cloudflare, so edits go live as soon as they are made. The mobile version is ready. <a href="https://londoninvestmentforum.com" target="_blank" rel="noopener">londoninvestmentforum.com</a></dd>
-          <dt>Result</dt><dd class="result">Three days from brief to launch, two of them spent on design sign-off within the team; publishing to hosting took two hours. Registration figures are not available yet.</dd>
+          <dt>Built</dt><dd>I set the brief inside the team and agreed the design with the team. I then built the site in Claude Code, put the code on GitHub and set up automatic deployment to Cloudflare, so edits go live as soon as they are made. The mobile version is ready. After launch I added the sales and registration layer:
+            <ul style="margin:8px 0 0;padding-left:18px">
+              <li><b>Stripe</b>: online payment; the site takes real payments.</li>
+              <li><b>Google Apps Script + Google Sheets</b>: guest registration, with everything collected automatically into one Google Sheet: who registered and who paid.</li>
+              <li><b>QR code</b>: check-in at the entrance, with arrived visitors marked in the same table.</li>
+            </ul>
+            <a href="https://londoninvestmentforum.com" target="_blank" rel="noopener">londoninvestmentforum.com</a></dd>
+          <dt>Result</dt><dd class="result">Three days from brief to launch, two of them spent on design sign-off within the team; publishing to hosting took two hours. Saving for the company of about £20,000 compared with the cost of developing and setting up the site.</dd>
         </dl>
         <p class="ctx" style="margin-top:12px">My role: author of the brief and the site, built with AI tools, not a classic team development project. This portfolio was assembled the same way, with Claude: I set the content and structure, reviewed every change and published it on GitHub Pages.</p>
-        <div class="tags"><span class="tag">Claude Code</span><span class="tag">GitHub</span><span class="tag">Cloudflare</span><span class="tag">AI-assisted development</span></div>
+        <div class="tags"><span class="tag">Claude Code</span><span class="tag">GitHub</span><span class="tag">Cloudflare</span><span class="tag">Stripe</span><span class="tag">Google Apps Script</span><span class="tag">Google Sheets</span><span class="tag">QR check-in</span><span class="tag">AI-assisted development</span></div>
       </div>
     </article>
   </section>
@@ -366,7 +372,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--rule);font-fa
     </div>
     <div class="skills">
       <div><h3>Process &amp; operations</h3><ul><li><b>BPMN, AS-IS / TO-BE</b> (Visio), stakeholder interviews</li><li>SOP and template libraries, operating-model design</li><li>Programme and project management, teams of 3–40</li><li>Plan-vs-actual budgets, KPI dashboards, management and investor reporting</li></ul></div>
-      <div><h3>Automation &amp; AI</h3><ul><li><b>Smartsheet</b> (advanced: cross-sheet formulas, automations, dashboards)</li><li><b>Bitrix24</b>: workflows, CRM, bots, integrations</li><li><b>Pipedrive</b>: CRM automation</li><li>Vector-search knowledge bases, LLM pilots, tool gateways; <b>Claude Code</b> and <b>GitHub</b> for building automations</li><li>AI-use scenarios, anonymisation policies, requirements for IT/Security</li></ul></div>
+      <div><h3>Automation &amp; AI</h3><ul><li><b>Smartsheet</b> (advanced: cross-sheet formulas, automations, dashboards)</li><li><b>Bitrix24</b>: workflows, CRM, bots, integrations</li><li><b>Pipedrive</b>: CRM automation</li><li>Vector-search knowledge bases, LLM pilots, tool gateways; <b>Claude Code</b> and <b>GitHub</b> for building automations; <b>Stripe</b>, <b>Google Apps Script</b> and <b>Google Sheets</b> for payment, registration and QR check-in</li><li>AI-use scenarios, anonymisation policies, requirements for IT/Security</li></ul></div>
       <div><h3>Domain</h3><ul><li>Construction and property development, 18 years</li><li>Development finance: due diligence, investor materials, exit scenarios</li><li>BIM / 4D (ISO 19650 context)</li><li>English professional · Russian native · Turkish basic</li></ul></div>
     </div>
   </section>
@@ -422,7 +428,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--rule);font-fa
   </section>
 
   <footer>
-    <span>Anna Akpinar (Sizova) — portfolio, updated October 2026</span>
+    <span>Anna Akpinar (Sizova) — portfolio, updated November 2026</span>
     <span>Client figures published with the owners' agreement; no client documents are reproduced.</span>
   </footer>
 </div>
